@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Tables extends Model
 {
     use HasFactory;
-    protected $table = 'tables';
-    protected $fillable = ['id','name','available','reserved_by_user_id'];
 
-    public function tableStatus()
+    protected $fillable = ['name', 'available', 'reserved_by_user_id'];
+
+    public function user()
     {
-        return $this->belongsTo(Table_statuses::class, 'status_id');
+        return $this->belongsTo(User::class, 'reserved_by_user_id');
     }
 }
