@@ -9,15 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
-            $table->integer('seats');
-            $table->foreignId('table_status_id')->constrained('table_statuses');
+            $table->string('name');
+            $table->boolean('available')->default(true);
+            $table->foreignId('reserved_by_user_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

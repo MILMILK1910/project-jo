@@ -37,7 +37,7 @@ class CustomersController extends Controller
 
         Customer::create($request->all());
 
-        return redirect()->route('dashboard')->with('success', 'Customer created successfully.');
+        return redirect()->route('reserve.index')->with('success', 'Customer created successfully.');
     }
 
     /**
